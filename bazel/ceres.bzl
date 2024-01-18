@@ -189,6 +189,7 @@ def ceres_library(name,
             "-I" + internal,
             "-Wunused-parameter",
             "-Wno-sign-compare",
+            "-std=c++17",
         ] + schur_eliminator_copts,
 
         # These include directories and defines are propagated to other targets
@@ -214,7 +215,7 @@ def ceres_library(name,
         ],
         visibility = ["//visibility:public"],
         deps = [
-            "@com_gitlab_libeigen_eigen//:eigen",
-            "@com_github_google_glog//:glog",
+            "@eigen//:eigen",
+            "@glog//:glog",
         ],
     )

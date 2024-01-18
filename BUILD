@@ -65,7 +65,7 @@ cc_library(
     ],
     deps = [
         "//:ceres",
-        "@com_github_gflags_gflags//:gflags",
+        "@gflags//:gflags",
     ],
 )
 
@@ -170,8 +170,8 @@ TEST_COPTS = [
 TEST_DEPS = [
     "//:ceres",
     "//:test_util",
-    "@com_gitlab_libeigen_eigen//:eigen",
-    "@com_github_gflags_gflags//:gflags",
+    "@eigen//:eigen",
+    "@gflags//:gflags",
 ]
 
 # Instantiate all the tests with a template.
@@ -207,7 +207,7 @@ TEST_DEPS = [
     name = benchmark_name,
     srcs = ["internal/ceres/" + benchmark_name + ".cc"],
     copts = TEST_COPTS,
-    deps = TEST_DEPS + ["@com_github_google_benchmark//:benchmark"],
+    deps = TEST_DEPS + ["@google_benchmark//:benchmark"],
 ) for benchmark_name in [
     "small_blas_gemm_benchmark",
     "small_blas_gemv_benchmark",
