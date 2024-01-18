@@ -4,6 +4,7 @@
 #
 # For more details, please check https://github.com/bazelbuild/bazel/issues/18958
 ###############################################################################
+module(name = "ceres", version = "2.2.1")
 
 bazel_dep(name = "glog", version = "0.6.0")
 bazel_dep(name = "gflags", version = "2.2.2")

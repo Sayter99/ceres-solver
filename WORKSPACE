@@ -30,4 +30,4 @@
 #
 # Bazel workspace file to enable building Ceres with Bazel.
 
-workspace(name = "com_google_ceres_solver")
+workspace(name = "ceres")
