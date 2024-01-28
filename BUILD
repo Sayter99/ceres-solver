@@ -56,9 +56,10 @@ cc_library(
         "internal/ceres/gtest/gtest.h",
     ],
     copts = [
-        "-Wno-sign-compare",
         "-DCERES_TEST_SRCDIR_SUFFIX=\\\"data/\\\"",
-    ],
+    ] + select({
+        "@platforms//os:linux": ["-Wno-sign-compare"],
+    }),
     includes = [
         "internal",
         "internal/ceres",
@@ -156,16 +157,18 @@ CERES_TESTS = [
     "visibility",
 ]
 
-TEST_COPTS = [
-    # Needed to silence GFlags complaints.
-    "-Wno-sign-compare",
+TEST_COPTS = select({
+    "@platforms//os:linux": [
+        # Needed to silence GFlags complaints.
+        "-Wno-sign-compare",
 
-    # These two warnings don't work well in conjunction with GMock, and
-    # trigger incorrectly on parts of rotation_test. For now, disable them,
-    # but in the future disable these warnings only for rotation_test.
-    # TODO(keir): When the tests are macro-ified, apply these selectively.
-    "-Wno-address",
-]
+        # These two warnings don't work well in conjunction with GMock, and
+        # trigger incorrectly on parts of rotation_test. For now, disable them,
+        # but in the future disable these warnings only for rotation_test.
+        # TODO(keir): When the tests are macro-ified, apply these selectively.
+        "-Wno-address",
+    ],
+})
 
 TEST_DEPS = [
     "//:ceres",
