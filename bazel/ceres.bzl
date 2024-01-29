@@ -196,7 +196,7 @@ def ceres_library(
             ],
             "@platforms//os:windows": [
                 "/std:c++20",
-                "/Zc:__cplusplust",
+                "/Zc:__cplusplus",
                 "/permissive-",
                 "-DWIN32_LEAN_AND_MEAN",
                 "-DNOGDI",
